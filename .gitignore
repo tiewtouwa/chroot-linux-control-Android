@@ -1,3 +1,16 @@
+# Only project files belong in this phone workspace repository.
+/*
+!/.gitignore
+!/AGENTS.md
+!/LICENSE
+!/README.md
+!/skills/
+!/scripts/
+/scripts/*
+!/scripts/vibrate.sh
+!/scripts/agy_vibrate_on_stop.sh
+!/scripts/codex_notify_filter.py
+
 __pycache__/
 *.py[cod]
 .DS_Store
