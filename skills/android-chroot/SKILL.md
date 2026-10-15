@@ -1,6 +1,6 @@
 ---
 name: android-chroot
-description: 在真实 root 的 Android chroot 中控制手机、调用系统命令和 Termux API、排查权限问题。不用于 proot 安装。
+description: 在真实 root 的 Android chroot 中控制手机、读取屏幕截图、调用系统命令和 Termux API、排查权限问题。不用于 proot 安装。
 ---
 
 # Android chroot
@@ -15,6 +15,7 @@ sh scripts/android-shell.sh -c 'dumpsys battery'
 ```
 
 - 首次连接先自检；Linux UID 0 不等于全部 Android 权限。
+- 已保存的屏幕截图位于 `/sdcard/Pictures/Screenshots`；读取最新截图时按修改时间选择，并查看图片。旧截图不代表实时屏幕，图片不复制到仓库。
 - 优先用现有 Android shell；Termux API 和 ADB 按需使用，不自动开放远程服务。
 - 参数通过位置参数传递，不拼进 shell 源码。操作前核对设备、应用用户和路径，操作后验证结果。
 - UI 操作先观察页面，逐步执行。修改设置记录旧值；不为排障关闭 SELinux 或扩大权限。
