@@ -26,10 +26,13 @@ if [ "$1" = --check ]; then
         exit 2
     fi
     set -- -c 'set -e; id; printf "android_release="; getprop ro.build.version.release; printf "android_sdk="; getprop ro.build.version.sdk; printf "android_abi="; getprop ro.product.cpu.abi'
+elif [ "$1" != -c ] || [ "$#" -lt 2 ]; then
+    printf '%s\n' 'Expected --check or -c SCRIPT; use --help.' >&2
+    exit 2
 fi
 
 # Preserve Android-specific variables and the caller environment otherwise.
 unset LD_LIBRARY_PATH LD_PRELOAD LD_AUDIT
-PATH=/system/bin:/system/xbin:/vendor/bin:/product/bin:/apex/com.android.runtime/bin
+PATH=/product/bin:/apex/com.android.runtime/bin:/apex/com.android.art/bin:/system_ext/bin:/system/bin:/system/xbin:/odm/bin:/vendor/bin:/vendor/xbin
 export PATH
 exec /system/bin/sh "$@"
