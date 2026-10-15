@@ -1,4 +1,4 @@
-# Android chroot 手机技能
+# chroot-linux-control-Android
 
 面向已 root 的 ARM Android 手机，在 chroot Linux 中使用 Codex 操作手机。主要入口为 `$android-chroot`，支持检查现有 Android shell、调用系统服务、按任务使用 Termux:API、操作应用/屏幕以及排查挂载与权限。
 
@@ -31,3 +31,9 @@ sh skills/android-chroot/scripts/android-shell.sh --check
 包装脚本要求现有环境可执行 `/system/bin/sh`；不会自动挂载、提权或连接设备。相机、麦克风、定位等仍依赖具体接口与 Android 权限。
 
 仓库不保存手机数据、截图、密钥或访问令牌。
+
+## 协作与许可证
+
+修改或提交前阅读 [AGENTS.md](AGENTS.md)，按文件检查暂存内容，公开前核对提交历史，避免上传手机数据或认证材料。
+
+本项目使用 [MIT License](LICENSE)。
