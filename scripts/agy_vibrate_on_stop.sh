@@ -1,6 +1,3 @@
 #!/bin/sh
-# agy Stop hook: vibrate when the turn ends, then allow the stop.
-cat >/dev/null
-sh "$(dirname "$0")/vibrate.sh" 500 || true
-printf '%s\n' '{"decision":"allow"}'
-exit 0
+# agy Stop hook: notify only after a successful, fully idle completion.
+exec python3 "$(dirname "$0")/agy_vibrate_on_stop.py"

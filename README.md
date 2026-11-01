@@ -2,7 +2,7 @@
 
 让 Codex 在已 root 的 Android chroot Linux 中操作手机，并作为网络诊断、USB 共享和 SSH 终端使用。核心是 `android-chroot` skill；proot 仅作说明。
 
-当前版本：`v0.3.0`。
+当前版本：`v0.3.1`。
 
 ## 安装与调用
 
@@ -49,7 +49,7 @@ $android-chroot 查看支持的红外频率和传感器
 ## 依赖与执行方式
 
 - 原生 Android：复用 `/system/bin/sh` 和 `cmd`、`dumpsys`、`pm`、`input` 等。包装脚本在子进程清理 Linux 动态库变量。
-- chroot：已有功能脚本需要 Python 3 标准库；网络任务按需使用 `ip`、OpenSSH、nmap、tcpdump、iperf3 等，先检查是否安装。
+- chroot：已有功能脚本需要 Python 3 标准库；网络任务按需使用 `ip`、OpenSSH、nmap、tcpdump、iperf3 等，先检查是否安装。Debian 环境中的通用工具优先用 Debian apt 安装并调用，核对命令路径，避免混用 Termux 版本。
 - Termux:API：需要兼容的应用、命令行工具、权限及可用调用通路。相机、录音、定位、短信等不用于自检。
 - Android 防火墙优先使用原生命令；chroot 的 nft 后端或扩展库可能不兼容。连接问题见 [连接排障](skills/android-chroot/references/android-bridge.md)。
 
@@ -73,7 +73,7 @@ python3 scripts/ui-controls.py --text '设置' --exact --json
 
 - `sh scripts/vibrate.sh 500`：震动 500 毫秒；执行失败会保留错误和退出码。
 - `codex_notify_filter.py`：过滤子任务完成通知。
-- `scripts/agy_vibrate_on_stop.sh`：agy Stop hook，结束时震动。
+- `scripts/agy_vibrate_on_stop.sh`：agy Stop hook，调用同目录的 Python 脚本，仅在 `fullyIdle=true`、`terminationReason=model_stop` 且无错误时震动；输出空 JSON。
 
 通知脚本需要本机 `cmd vibrator_manager` 和相应权限；脚本执行成功不替代硬件效果验证。
 
@@ -83,6 +83,7 @@ python3 scripts/ui-controls.py --text '设置' --exact --json
 
 ```sh
 python3 -m unittest discover -s skills/android-chroot/tests -v
+python3 -m unittest discover -s scripts -p 'test_*.py' -v
 ```
 
 真实设备验证按任务选择只读入口；实际禁用、拍照、录音、网络切换和连接对端分别在对应操作请求下测试。发布使用 Git 标签；新增功能更新次版本，问题修复更新补丁版本，不把版本号加进技能名。

@@ -9,7 +9,10 @@
 /scripts/*
 !/scripts/vibrate.sh
 !/scripts/agy_vibrate_on_stop.sh
+!/scripts/agy_vibrate_on_stop.py
 !/scripts/codex_notify_filter.py
+!/scripts/test_codex_notify_filter.py
+!/scripts/test_agy_vibrate_on_stop.py
 
 __pycache__/
 *.py[cod]
