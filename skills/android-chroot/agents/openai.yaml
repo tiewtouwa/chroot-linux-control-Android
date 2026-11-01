@@ -1,4 +1,4 @@
 interface:
-  display_name: "Android chroot 手机控制"
-  short_description: "在 root chroot 中检查手机环境、管理应用状态、验证界面操作与截图"
-  default_prompt: "使用 $android-chroot 检查我的手机连接与权限，然后完成我指定的手机操作。"
+  display_name: "Android chroot 手机与网络控制"
+  short_description: "在 root chroot 中操作手机硬件、USB 网络、SSH 和系统界面"
+  default_prompt: "使用 $android-chroot 检查当前手机所需接口，完成我指定的手机、USB 网络或 SSH 操作并验证结果。"

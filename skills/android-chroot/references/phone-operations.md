@@ -11,6 +11,7 @@ sh scripts/android-shell.sh -c 'test -e "$1"' phone '/sdcard/Download/example.tx
 ```
 
 - 参数示例中 `phone` 是 `$0`，文件路径是 `$1`。先确认 Android 与 chroot 的路径映射。
+- USB 网卡、地址、共享与 NAT 见 [网络配置](networking.md)；扫描、SSH、传输和抓包见 [远程与网络工具](remote-access.md)；硬件、通信与自动化见 [系统接口](device-interfaces.md)。
 - 应用状态修改和恢复见 [应用管理](package-management.md)，界面定位、点击和截图见 [界面操作](ui-operations.md)。
 - 滑动、按键用 `input`，启动应用用 `am`。先查看本机帮助并核对参数；有些系统的 `input --help` 不可用，直接运行无参数 `input` 可读取帮助。不要假设 `input text` 支持中文。
 - 拍照、录音、定位等通过已有接口执行，仍受 Android 权限与后台限制；不能用来测试连通性。
