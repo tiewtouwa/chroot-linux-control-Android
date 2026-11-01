@@ -14,5 +14,4 @@ fi
 (
     unset LD_LIBRARY_PATH LD_PRELOAD LD_AUDIT
     PATH="/system/bin:/system/xbin:$PATH" exec cmd vibrator_manager synced -f oneshot "$MS"
-) >/dev/null 2>&1
-exit 0
+)
