@@ -8,14 +8,16 @@
 
 需要现有 root/chroot 环境和可用的 Android 接口。技能不会授予权限，也不自动安装工具或启动服务。
 
-在项目根目录建立软链接：
+技能仅在本仓库中自动加载。入口 `.agents/skills/android-chroot` 通过软链接指向 `skills/android-chroot`，随仓库源码更新。
+
+若入口缺失，在项目根目录重建：
 
 ```sh
-mkdir -p "$HOME/.agents/skills"
-ln -s "$(pwd)/skills/android-chroot" "$HOME/.agents/skills/android-chroot"
+mkdir -p .agents/skills
+ln -s ../../skills/android-chroot .agents/skills/android-chroot
 ```
 
-目标已存在时先检查，不强制覆盖。也可复制 `skills/android-chroot` 到技能目录。软链接随工作区更新；版本通过 Git 标签管理，技能名保持 `android-chroot`。
+目标已存在时先检查，不强制覆盖。版本通过 Git 标签管理，技能名保持 `android-chroot`。
 
 在 Codex 中直接描述任务，或明确调用：
 
@@ -26,7 +28,7 @@ $android-chroot 用我已有的 SSH 配置连接指定电脑
 $android-chroot 查看支持的红外频率和传感器
 ```
 
-首次加载未出现时重启 Codex。使用某项能力时只加载对应操作文档，不为普通查询执行完整硬件测试。
+首次加载未出现或从用户级切换为仓库级后，在本仓库中重启 Codex。使用某项能力时只加载对应操作文档，不为普通查询执行完整硬件测试。
 
 ## 功能范围
 
