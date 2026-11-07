@@ -1,6 +1,6 @@
 ---
 name: android-chroot
-description: 在已 root 的 Android chroot 中操作手机：USB 网卡与网络共享、IP/路由/DNS、nmap 扫描、SSH/文件传输/隧道、抓包、防火墙，以及应用管理、界面操作、相机音频、红外/NFC、传感器和系统自动化。不用于 proot 安装或刷机。
+description: 在已 root 的 Android chroot 中操作手机：USB 网卡与网络共享、IP/路由/DNS、nmap 扫描、SSH/文件传输/隧道、抓包、防火墙，以及应用与进程查询、界面操作、相机音频、红外/NFC、传感器和系统自动化。不用于 proot 安装或刷机。
 ---
 
 # Android chroot
@@ -27,7 +27,7 @@ description: 在已 root 的 Android chroot 中操作手机：USB 网卡与网�
 | 定时任务、闹钟、指纹认证、Keystore | [自动化与认证](references/device-interfaces.md#定时任务闹钟与指纹密钥) |
 | 应用清单、批量禁用、原状态恢复、重启前后对比 | [应用管理](references/package-management.md)：`phone.py packages/disable/restore/snapshot/compare` |
 | 按文字／ID 点击、等待界面、验证结果、截图与前台应用 | [界面操作](references/ui-operations.md) |
-| Android 用户、显示参数、文件路径检查 | [原生命令示例](references/phone-operations.md) |
+| Android 进程、PID、资源占用、用户、显示参数、文件路径检查 | [原生命令示例](references/phone-operations.md) |
 | 动态库、Binder、Termux API、权限和挂载问题 | [连接排障](references/android-bridge.md) |
 
 调用 `termux-*` 前读[调用准备](references/device-interfaces.md#调用准备)，复用现有通路。
