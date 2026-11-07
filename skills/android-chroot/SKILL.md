@@ -9,20 +9,28 @@ description: 在已 root 的 Android chroot 中操作手机：USB 网卡与网�
 
 首次连接或换手机，先用 `sh scripts/android-shell.sh --check` 确认通路，再读取任务所需的型号、用户、网络或硬件信息。完整环境核查用 `python3 scripts/phone.py doctor`；普通查询不必每次导出界面。包名、网卡名、坐标、IP、驱动和文件路径都从当前设备取得，不沿用其他机型结果。
 
-## 按任务加载
+## 操作索引
 
-只读当前任务对应的文档；用户要求盘点全部能力时再遍历各类入口。
+按目标读取对应章节，不遍历全部文档。常用只读入口：`python3 scripts/phone.py foreground` 查前台，`python3 scripts/ui-controls.py --json` 查控件，`python3 scripts/phone.py screenshot` 截图。参数用脚本 `--help` 查询。
 
 | 用户目标 | 入口与操作说明 |
 |---|---|
 | USB 网卡、修改 IP、路由／DNS、USB 共享／反向供网、Wi-Fi／蓝牙共享、NAT | [网络配置](references/networking.md) |
 | nmap、SSH 登录电脑／手机、SCP／SFTP／rsync、端口转发／SOCKS、测速、抓包 | [远程与网络工具](references/remote-access.md) |
-| 声音、语音、拍照／录音、手电筒、震动、红外、NFC、传感器、定位、剪贴板 | [手机硬件与系统接口](references/device-interfaces.md) |
-| 通知、短信／电话、联系人、壁纸／显示、电源、文件分享、定时任务、指纹认证 | 同上 |
-| 应用清单、批量禁用、原状态恢复、重启前后对比 | [应用管理](references/package-management.md) |
+| 启动应用、输入文字、滑动／按键、录屏、亮度／旋转、通知栏 | [应用与屏幕](references/device-interfaces.md#应用界面屏幕) |
+| 音量、播放、语音、拍照／录音 | [媒体](references/device-interfaces.md#声音语音相机和录音) |
+| 手电筒、震动、红外、NFC 标签 | [硬件](references/device-interfaces.md#手电筒震动红外nfc) |
+| 传感器、定位、剪贴板 | [采集与剪贴板](references/device-interfaces.md#传感器定位与剪贴板) |
+| 通知、勿扰、短信／电话、联系人 | [通知与通信](references/device-interfaces.md#通知对话框与通信) |
+| 壁纸、深色模式、电池、省电、亮屏／息屏、重启 | [外观与电源](references/device-interfaces.md#壁纸外观电池与电源) |
+| 文件选择／分享、下载、SAF、USB 外设 | [文件与外设](references/device-interfaces.md#文件访问下载分享与-usb-外设) |
+| 定时任务、闹钟、指纹认证、Keystore | [自动化与认证](references/device-interfaces.md#定时任务闹钟与指纹密钥) |
+| 应用清单、批量禁用、原状态恢复、重启前后对比 | [应用管理](references/package-management.md)：`phone.py packages/disable/restore/snapshot/compare` |
 | 按文字／ID 点击、等待界面、验证结果、截图与前台应用 | [界面操作](references/ui-operations.md) |
-| 电池、显示参数等原生命令 | [操作示例](references/phone-operations.md) |
+| Android 用户、显示参数、文件路径检查 | [原生命令示例](references/phone-operations.md) |
 | 动态库、Binder、Termux API、权限和挂载问题 | [连接排障](references/android-bridge.md) |
+
+调用 `termux-*` 前读[调用准备](references/device-interfaces.md#调用准备)，复用现有通路。
 
 ## 执行与验证
 
